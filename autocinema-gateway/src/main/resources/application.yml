@@ -1,0 +1,111 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: autocinema-gateway
+
+  cloud:
+    gateway:
+      routes:
+
+        # HOME
+        - id: home
+          uri: http://localhost:8001
+          predicates:
+            - Path=/home/**, /cssh/**, /image/**
+          filters:
+            - StripPrefix=0
+
+        # USUARIOS
+        - id: usuarios
+          uri: http://localhost:8002
+          predicates:
+            - Path=/usuarios/**
+          filters:
+            - StripPrefix=0
+
+        # PELICULA
+        - id: pelicula
+          uri: http://localhost:8003
+          predicates:
+            - Path=/peliculas/**, /imgp/**, /cssp/**
+          filters:
+            - StripPrefix=0
+
+        # SEDE
+        - id: sede
+          uri: http://localhost:8004
+          predicates:
+            - Path=/sedes/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # SALA
+        - id: sala
+          uri: http://localhost:8005
+          predicates:
+            - Path=/salas/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # RECLAMOS
+        - id: reclamos
+          uri: http://localhost:8006
+          predicates:
+            - Path=/reclamos/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # METODO PAGO
+        - id: metodopago
+          uri: http://localhost:8007
+          predicates:
+            - Path=/metodos_pago/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # FUNCIONES
+        - id: funciones
+          uri: http://localhost:8008
+          predicates:
+            - Path=/funciones/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # ESTACIONAMIENTO
+        - id: estacionamiento
+          uri: http://localhost:8009
+          predicates:
+            - Path=/estacionamientos/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # CONFITERIA
+        - id: confiteria
+          uri: http://localhost:8010
+          predicates:
+            - Path=/confiterias/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # CATEGORIA
+        - id: categoria
+          uri: http://localhost:8011
+          predicates:
+            - Path=/categorias/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # BOLETOS
+        - id: boletos
+          uri: http://localhost:8012
+          predicates:
+            - Path=/boletos/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

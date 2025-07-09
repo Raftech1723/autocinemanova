@@ -1,0 +1,110 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: autocinema-gateway
+
+  cloud:
+    gateway:
+      routes:
+        # HOME
+        - id: home
+          uri: http://autocinema-home:8001
+          predicates:
+            - Path=/home/**, /cssh/**, /image/**
+          filters:
+            - StripPrefix=0
+
+        # USUARIOS
+        - id: usuarios
+          uri: http://autocinema-usuarios:8002
+          predicates:
+            - Path=/usuarios/**, /css/**, /imagen/**
+          filters:
+            - StripPrefix=0
+
+        # PELICULA
+        - id: pelicula
+          uri: http://autocinema-pelicula:8003
+          predicates:
+            - Path=/peliculas/**, /imgp/**, /cssp/**
+          filters:
+            - StripPrefix=0
+
+        # SEDE
+        - id: sede
+          uri: http://autocinema-sede:8004
+          predicates:
+            - Path=/sedes/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # SALA
+        - id: sala
+          uri: http://autocinema-sala:8005
+          predicates:
+            - Path=/salas/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # RECLAMO
+        - id: reclamos
+          uri: http://autocinema-reclamo:8006
+          predicates:
+            - Path=/reclamos/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # METODO PAGO
+        - id: metodopago
+          uri: http://autocinema-metodopago:8007
+          predicates:
+            - Path=/metodos_pago/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # FUNCIONES
+        - id: funciones
+          uri: http://autocinema-funciones:8008
+          predicates:
+            - Path=/funciones/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # ESTACIONAMIENTO
+        - id: estacionamiento
+          uri: http://autocinema-estacionamiento:8009
+          predicates:
+            - Path=/estacionamientos/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # CONFITERIA
+        - id: confiteria
+          uri: http://autocinema-confiteria:8010
+          predicates:
+            - Path=/confiterias/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # CATEGORIA
+        - id: categoria
+          uri: http://autocinema-categoria:8011
+          predicates:
+            - Path=/categorias/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+        # BOLETOS
+        - id: boletos
+          uri: http://autocinema-boletos:8012
+          predicates:
+            - Path=/boletos/**, /imagen/**, /css/**
+          filters:
+            - StripPrefix=0
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

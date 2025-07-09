@@ -1,0 +1,7 @@
+server:
+  forward-headers-strategy: framework
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static/
